@@ -23,10 +23,10 @@ jobs:
           SDKMGR=$(find "$ANDROID_HOME/cmdline-tools" -path '*/bin/sdkmanager' -type f | head -n 1)
           if [ -z "$SDKMGR" ]; then echo "No sdkmanager in runner SDK"; exit 1; fi
           echo "sdkmanager path: $SDKMGR"
-          "$SDKMGR" --install "platforms;android-35" "build-tools;35.0.0"
+          "$SDKMGR" --install "platforms;android-36" "build-tools;35.0.0"
       - uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '8.9'
+          gradle-version: '8.13'
       - name: Build Android binaries
         working-directory: tradebridge-android
         run: gradle --no-daemon :app:assembleDebug :app:bundleRelease
